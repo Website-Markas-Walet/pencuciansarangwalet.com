@@ -10,6 +10,8 @@
 		<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
 
+<meta name="facebook-domain-verification" content="rsw8pfzx25q4w4u4hdoo5g3ncjkeri" />
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
