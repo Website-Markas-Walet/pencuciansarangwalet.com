@@ -1,0 +1,105 @@
+{
+  "site_id": "pencuciansarangwalet",
+  "domain": "pencuciansarangwalet.com",
+  "repo": "Website-Markas-Walet/pencuciansarangwalet.com",
+  "production_branch": "main",
+  "language": "id-ID",
+  "stack_origin": "WordPress 6.2 static export (Astra 4.1.2 + Elementor 3.12.0 + Page Generator Pro + Header-Footer-Elementor + WPForms Lite + Essential Addons)",
+  "is_live_backend": false,
+  "notes": "Situs = file HTML statis datar di root repo. Tidak ada PHP/DB/REST API. /wp-json/ adalah file statis mati.",
+
+  "deploy": {
+    "status": "UNCONFIRMED_BLOCKER",
+    "evidence_in_repo": "TIDAK ADA config deploy (tanpa .nojekyll, CNAME, _headers/_redirects/wrangler.toml, functions/, .github/workflows, README)",
+    "live_header_probe": "GAGAL — network policy memblok akses ke domain (gateway 403 CONNECT), host tidak bisa di-fingerprint dari session ini",
+    "conclusion": "Target deploy diatur DI LUAR repo. Hanya pemilik akun (GitHub Settings / Cloudflare dashboard / DNS) yang tahu. Lihat _cms/README.md untuk decision-tree.",
+    "candidates": ["github_pages_root_main", "cloudflare_pages_connected_repo", "server_git_pull"],
+    "deploy_hook_url": null
+  },
+
+  "write_access": {
+    "recommended": "GitHub App (fine-grained, contents:write) ATAU deploy key SSH per-repo",
+    "avoid": "PAT personal broad-scope",
+    "note": "Kirim mekanisme + siapa yang meng-install; JANGAN kirim token di chat/commit."
+  },
+
+  "analytics": {
+    "gtm": "GTM-NPLJCRC",
+    "tiktok_pixel": "CJA4IDBC77U5K7SPBH0G",
+    "facebook_domain_verification": "rsw8pfzx25q4w4u4hdoo5g3ncjkeri",
+    "ga4": null,
+    "adsense": null,
+    "location": "Di-hardcode di <head>/<body> tiap file; TIDAK seragam (GTM hanya di 457/509 file). Kandidat kontrol pusat CMS."
+  },
+
+  "brand": {
+    "primary_color": "#840800",
+    "secondary_colors": ["#2c541d", "#191919", "#ffffff"],
+    "fonts": ["Montserrat", "Lato", "Roboto", "Roboto Slab"],
+    "font_source": "Google Fonts",
+    "logo": "/wp-content/uploads/2023/03/cropped-new-crop-logo-pencucian-walet-1024x260.png",
+    "logo_variants": ["188x48", "300x76", "768x195", "1024x260", "1536x390", "2048x521"],
+    "favicon": "/wp-content/uploads/2023/03/cropped-icon-logo-pencucian-walet-min-32x32.png",
+    "apple_touch_icon": "/wp-content/uploads/2023/03/cropped-icon-logo-pencucian-walet-min-180x180.png"
+  },
+
+  "menu_primary": [
+    { "label": "Home", "href": "/" },
+    { "label": "Tentang", "href": "/tentang/" },
+    { "label": "Proses Cuci", "href": "/proses-cuci/" },
+    { "label": "Kontak", "href": "/kontak/" },
+    { "label": "Blog", "href": "/blog/" }
+  ],
+
+  "contact": {
+    "whatsapp": "6287725260196",
+    "whatsapp_link": "https://wa.me/6287725260196",
+    "email": "sales@markaswalet.com",
+    "address": null
+  },
+
+  "url_patterns": {
+    "convention": "folder + /index.html, WAJIB trailing slash, semua root-relative",
+    "home": "/",
+    "article": "/{slug}/",
+    "page": "/{slug}/  (tentang, kontak, proses-cuci, blog, desain)",
+    "kota_landing": "/kota/jasa-cuci-sarang-walet-di-{kota-slug}-{provinsi-slug}/",
+    "category_archive": "/category/{slug}/",
+    "author_archive": "/author/{slug}/",
+    "quirks": [
+      "Trailing slash wajib — mengubahnya memutus link & SEO",
+      "Link internal campur root-relative (/path/) dan absolute (https://...) — perlu normalisasi",
+      "Sisa staging: admin-ajax.php menunjuk subpath /pencuciansarangwalet/"
+    ]
+  },
+
+  "content_types": {
+    "article": { "count": 9, "editable": true, "source": "manual", "export": "_cms/content/articles.json" },
+    "page": { "count": 5, "editable": true, "source": "manual", "items": ["tentang", "kontak", "proses-cuci", "blog", "desain"] },
+    "kota_landing": { "count": 487, "editable": false, "source": "Page Generator Pro (template + dataset)", "export": "_cms/content/kota.dataset.json", "note": "JANGAN edit per-halaman; ubah template+dataset lalu regenerate" },
+    "category_archive": { "count": 1, "editable": false, "source": "auto" },
+    "author_archive": { "count": 1, "editable": false, "source": "auto" }
+  },
+
+  "seo_artifacts": {
+    "sitemap_index": "sitemap_index.xml",
+    "sitemaps": ["post-sitemap.xml (9)", "page-sitemap.xml (5)", "kota-sitemap1.xml (200)", "kota-sitemap2.xml (200)", "kota-sitemap3.xml (89)"],
+    "must_regenerate_on_publish": true
+  },
+
+  "chrome": {
+    "centralized": false,
+    "template_extracted": "_cms/layout.template.html",
+    "duplication": "Header/footer/menu dikopi ke tiap file; nav ada di 387/509, GTM di 457/509 — TIDAK seragam",
+    "action_needed": "Gunakan _cms/layout.template.html sebagai single-source untuk membungkus halaman baru; refactor halaman lama menyusul"
+  },
+
+  "known_issues": [
+    "826 hotlink gambar eksternal (774 blogspot, 51 http://localhost RUSAK, 1 gravatar) -> rehome ke R2",
+    "121/487 halaman kota tidak punya <h1>",
+    "502 file CSS per-halaman Elementor (cruft) di wp-content/uploads/elementor -> bisa dibuang",
+    "Media 351MB belum dioptimasi (PNG/JPG, tanpa WebP/AVIF)",
+    "Mixed absolute/relative internal links",
+    "Chrome & tracking tidak seragam antar halaman"
+  ]
+}
