@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /cms/
+Disallow: /_cms/
+Disallow: /*.md$
+
+Sitemap: https://pencuciansarangwalet.com/sitemap_index.xml
