@@ -83,7 +83,8 @@
 
   "seo_artifacts": {
     "sitemap_index": "sitemap_index.xml",
-    "sitemaps": ["post-sitemap.xml (9)", "page-sitemap.xml (5)", "kota-sitemap1.xml (200)", "kota-sitemap2.xml (200)", "kota-sitemap3.xml (89)"],
+    "sitemaps": ["post-sitemap.xml (9)", "page-sitemap.xml (10)", "desain-sitemap.xml (5)", "kota-sitemap1.xml (122)", "kota-sitemap2.xml (122)", "kota-sitemap3.xml (122)"],
+    "robots": "robots.txt (Sitemap: https://pencuciansarangwalet.com/sitemap_index.xml)",
     "must_regenerate_on_publish": true
   },
 
